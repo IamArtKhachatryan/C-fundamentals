@@ -4,11 +4,12 @@ public class MyList
 {
     private int[] _items;
     private int _count;
-    private const int InitialCapacity = 4;
+    private int _initialCapacity;
 
-    public MyList()
+    public MyList(int InitialCapacity = 4)
     {
-        _items = new int[InitialCapacity];
+        _initialCapacity = InitialCapacity;
+        _items = new int[_initialCapacity];
         _count = 0;
     }
 
@@ -62,7 +63,7 @@ public class MyList
     {
         if (_items.Length < min)
         {
-            int newCapacity = _items.Length == 0 ? InitialCapacity : _items.Length * 2;
+            int newCapacity = _items.Length == 0 ? _initialCapacity : _items.Length * 2;
 
             if (newCapacity < min) newCapacity = min;
 
@@ -101,7 +102,7 @@ public class MyList
 
     public void Clear()
     {
-        _items = new int[InitialCapacity];
+        _items = new int[_initialCapacity];
         _count = 0;
     }
 }
@@ -109,7 +110,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        MyList list = new MyList();
+        MyList list = new MyList(5);
 
         
         list.Add(17);
